@@ -8,9 +8,9 @@ import java.util.List;
  * (User)表数据库访问层
  *
  * @author heyou
- * @since 2020-05-31 00:18:06
+ * @since 2020-05-31 14:37:30
  */
-public interface IUserMapper {
+public interface UserMapper {
 
     /**
      * 通过ID查询单条数据
@@ -33,26 +33,26 @@ public interface IUserMapper {
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param user 实例对象
+     * @param User 实例对象
      * @return 对象列表
      */
-    List<User> queryAll(User user);
+    List<User> queryAll(User User);
 
     /**
      * 新增数据
      *
-     * @param user 实例对象
+     * @param User 实例对象
      * @return 影响行数
      */
-    int insert(User user);
+    int insert(User User);
 
     /**
      * 修改数据
      *
-     * @param user 实例对象
+     * @param User 实例对象
      * @return 影响行数
      */
-    int update(User user);
+    int update(User User);
 
     /**
      * 通过主键删除数据
