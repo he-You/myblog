@@ -1,9 +1,21 @@
 server:
   port: 8081
+#不推荐这种方式,拿到密钥就可以进行解密
+jasypt:
+  encryptor:
+    password: ${jasypt_encryptor_password:Heyou@2020}
 spring:
+  data:
+    elasticsearch:
+      cluster-nodes: localhost:9300
+      cluster-name: elasticsearch
+  mvc:
+    throw-exception-if-no-handler-found: true
+    resources:
+      add-mappings: false
   datasource:
-    username: root
-    password: 963553
+    username: ENC(t6mRCShQFA/BI0mJ9fhMzg==)
+    password: ENC(J6favFnOOW00s3JbZl6xkQ==)
     url: jdbc:mysql://localhost:3306/vueblog?serverTimezone=UTC&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
@@ -12,8 +24,19 @@ spring:
     host: 127.0.0.1
     port: 6379
     timeout: 10000
+  main:
+    allow-bean-definition-overriding: true
   devtools:
     restart:
-      enabled: true  #设置开启热部署
+      enabled: false  #设置开启热部署
+
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.heyou.springboot.entity # 注意：对应实体类的路径
